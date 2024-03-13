@@ -75,14 +75,14 @@
     </div>
 
     <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-7">
-        <div class="xl:col-span-4 col-span-full rounded-lg bg-background p-4">
+        <div class="xl:col-span-4 col-span-full rounded-lg bg-background p-4 overflow-x-auto scrollbar-thin">
             <div>
                 <h3 class="font-semibold">Overview</h3>
             </div>
-            <div class="pl-2 max-w-full overflow-x-auto">
+            <div class="max-w-full   w-full">
                 <canvas id="myChart"></canvas>
             </div>
-            <div class="text-center flex flex-col justify-end">Sale chart</div>
+            <div class="text-center flex flex-col justify-end mt-6 text-sm font-medium">Sale chart</div>
         </div>
         <div class="xl:col-span-3 col-span-full rounded-lg bg-background p-4">
             <div>

@@ -5,6 +5,10 @@ namespace App\Providers;
 use App\Repositories\Base\SalaryRepositoryInterface;
 use App\Repositories\EmployeeRepository;
 use App\Repositories\SalaryRepository;
+use App\Services\EmployeeService;
+use App\Services\Interfaces\EmployeeServiceInterface;
+use App\Services\Interfaces\SalaryServiceInterface;
+use App\Services\SalaryService;
 use EmployeeRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,7 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->registerRepositories();
+        $this->registerServices();
     }
 
     /**
@@ -28,16 +33,15 @@ class AppServiceProvider extends ServiceProvider
 
 
 
-    public function registerRepository()
+    public function registerRepositories()
     {
         $this->app->singleton(EmployeeRepositoryInterface::class, EmployeeRepository::class);
         $this->app->singleton(SalaryRepositoryInterface::class, SalaryRepository::class);
     }
 
-    public function registerService()
+    public function registerServices()
     {
-        $this->app->singleton(EmployeeService::class);
-        
-        $this->app->singleton()
+        $this->app->singleton(EmployeeServiceInterface::class, EmployeeService::class);
+        $this->app->singleton(SalaryServiceInterface::class, SalaryService::class);
     }
 }

@@ -5,34 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-
-    <!-- Scripts -->
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css"> --}}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.edatagrid.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased [&>*]:!font-sans">
     <div class="min-h-screen bg-gray-100">
-
-        <div class="hidden xl:block">
-            <x-sidebar />
-        </div>
-
+        <aside class="fixed hidden xl:block h-full">
+            <x-layout.sidebar />
+        </aside>
         <main class="xl:pl-72">
-            @include('layouts.navigation')
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-full mx-auto py-6 px-4">
-                        {{-- {{ $header }} --}}
-                    </div>
-                </header>
-            @endif
-            <!-- Page Content -->
-            <div class="p-10">
+            <x-layout.navigation />
+            <div class="p-10 sm:p-2">
                 {{ $slot }}
             </div>
         </main>
