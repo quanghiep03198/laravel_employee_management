@@ -2,8 +2,7 @@
 
 namespace App\Services\Interfaces;
 
-
 interface SalaryServiceInterface
 {
-    public function createEmployeeSalary($payload);
+   public function createEmployeeSalary($payload);
 }

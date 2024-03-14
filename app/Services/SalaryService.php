@@ -7,12 +7,13 @@ use App\Services\Interfaces\SalaryServiceInterface;
 
 class SalaryService implements SalaryServiceInterface
 {
-    public function __construct(protected SalaryRepositoryInterface $salaryRepository)
-    {
-    }
+   public function __construct(
+      protected SalaryRepositoryInterface $salaryRepository
+   ) {
+   }
 
-    public function createEmployeeSalary($payload)
-    {
-        return $this->salaryRepository->create($payload);
-    }
+   public function createEmployeeSalary($payload)
+   {
+      return $this->salaryRepository->create($payload);
+   }
 }

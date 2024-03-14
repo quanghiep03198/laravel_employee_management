@@ -1,52 +1,29 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+   <div class="prose my-6 text-center prose-h2:mb-1">
+      <h2>Register</h2>
+      <p class="text-muted">Create your own account. It's free and only take a minute</p>
+   </div>
+   <form method="POST" action="{{ route('register') }}"
+      class="my-6 flex w-full max-w-lg flex-col gap-6 rounded-lg bg-background p-6 xl:px-6 xl:py-10">
+      @csrf
+      <!-- Name -->
+      <x-ui.input-field-control name="name" :label="'Your name'" :errors="$errors" type="text"
+         placeholder="Your display name" required />
+      <x-ui.input-field-control name="email" :label="'Email'" :errors="$errors" type="email"
+         placeholder="example@email.com" />
+      <x-ui.input-field-control name="password" :label="'Password'" :errors="$errors" type="password"
+         placeholder="******" />
+      <x-ui.input-field-control name="password_confirmation" :label="'Confirm password'" :errors="$errors" type="password"
+         placeholder="******" />
+      <x-ui.primary-button class="py-3">
+         {{ __('Register') }}
+      </x-ui.primary-button>
+   </form>
+   <a class="self-center rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      href="{{ route('login') }}">
+      {{ __('Already registered?') }}
+   </a>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
 </x-guest-layout>

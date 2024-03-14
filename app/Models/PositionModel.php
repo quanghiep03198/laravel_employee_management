@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PositionModel extends Model
 {
-    use HasFactory;
+   use HasFactory;
 
-    protected $fillable = [
-        'postion_name'
-    ];
+   protected $fillable = ["postion_name"];
 }
