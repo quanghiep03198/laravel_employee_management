@@ -12,6 +12,6 @@ class SalaryController extends Controller
 
    public function index()
    {
-      return view("salary.list");
+      return view("salary.index");
    }
 }

@@ -1794,14 +1794,15 @@
   display: none;
 }
 .datagrid-empty {
-  position: relative;
+  position: absolute;
   left: 0;
   top: 0;
-  right: 0;
   width: 100%;
-  min-height: 3rem;
+  padding: 1rem;
+  height: 25px;
   line-height: 25px;
   text-align: center;
+  color: var(--muted);
 }
 .datagrid-sort-icon {
   padding: 0;
@@ -1856,7 +1857,7 @@
 .datagrid-header-rownumber,
 .datagrid-cell-rownumber {
   margin: 0;
-  padding: 4px;
+  padding: 4px 8px;
   white-space: nowrap;
   word-wrap: normal;
   overflow: hidden;
@@ -1882,7 +1883,8 @@
 }
 .datagrid-body {
   margin: 0;
-  padding: 0;
+  /* padding: 1rem; */
+  min-height: fit-content;
   overflow: auto;
   zoom: 1;
 }
@@ -2026,12 +2028,11 @@
 }
 .datagrid-row-over,
 .datagrid-header td.datagrid-header-over {
-  background: #e6e6e6;
-  color: #00438a;
+  background: var(--border);
   cursor: default;
 }
 .datagrid-row-selected {
-  background: #0081c2;
+  background: var(--primary);
   color: #fff;
 }
 .datagrid-row-editing .textbox,
@@ -2207,6 +2208,8 @@
   text-align: center;
   font-size: 12px;
   border-radius: 4px;
+  display: block;
+  margin: 0 4px;
 }
 .pagination-page-list {
   margin: 0px 6px;
@@ -2240,19 +2243,24 @@
   min-width: 28px;
 }
 .pagination-first {
-  background: url("images/pagination_icons.png") no-repeat 0 center;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-double-left%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M8.354%201.646a.5.5%200%200%201%200%20.708L2.707%208l5.647%205.646a.5.5%200%200%201-.708.708l-6-6a.5.5%200%200%201%200-.708l6-6a.5.5%200%200%201%20.708%200%22%2F%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M12.354%201.646a.5.5%200%200%201%200%20.708L6.707%208l5.647%205.646a.5.5%200%200%201-.708.708l-6-6a.5.5%200%200%201%200-.708l6-6a.5.5%200%200%201%20.708%200%22%2F%3E%0A%3C%2Fsvg%3E")
+    no-repeat 0 center;
 }
 .pagination-prev {
-  background: url("images/pagination_icons.png") no-repeat -16px center;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-left%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M11.354%201.646a.5.5%200%200%201%200%20.708L5.707%208l5.647%205.646a.5.5%200%200%201-.708.708l-6-6a.5.5%200%200%201%200-.708l6-6a.5.5%200%200%201%20.708%200%22%2F%3E%0A%3C%2Fsvg%3E")
+    no-repeat 0 center;
 }
 .pagination-next {
-  background: url("images/pagination_icons.png") no-repeat -32px center;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-right%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M4.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L10.293%208%204.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%0A%3C%2Fsvg%3E")
+    no-repeat 0 center;
 }
-.pagination-last::before {
-  content: U+F280;
-  font-size: 16px;
-  /* background: url("images/pagination_icons.png") no-repeat -48px center; */
+.pagination-last {
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-double-right%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M3.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L9.293%208%203.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M7.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L13.293%208%207.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%0A%3C%2Fsvg%3E")
+    no-repeat 0 center;
 }
+
+/* background- */
+
 .pagination-load {
   background: url("images/pagination_icons.png") no-repeat -64px center;
 }

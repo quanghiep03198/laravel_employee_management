@@ -14,6 +14,6 @@ class DepartmentController extends Controller
 
    public function index()
    {
-      return view("department.list");
+      return view("department.index");
    }
 }

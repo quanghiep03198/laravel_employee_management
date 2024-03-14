@@ -4,9 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+   --background: #fff;
+   --foreground: #030712;
+   --primary: #ff2d20;
+   --border: #e5e7eb;
+   --muted: #6b7280;
+   --destructive: #dc2626;
+   --success: #22c55e;
+   --warning: #fb923c;
+   --background-contrast: #111827;
+   --foreground-contrast: #fff;
+   --ring: #ff2d20
+}
 
-@layer base{
+@layer base {
    select {
-      @apply !bg-none border border-border px-1.5 py-2 rounded-md
+      @apply !bg-none border border-border px-1.5 py-2 rounded-md focus:!outline-none focus:!border-primary focus:!ring-0
+   }
+
+   input {
+      @apply border !border-border focus:!outline-none focus:!border-primary focus:!ring-0
    }
 }

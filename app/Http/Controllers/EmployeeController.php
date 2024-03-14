@@ -17,7 +17,7 @@ class EmployeeController extends Controller
 
    public function index()
    {
-      return view("employee.list");
+      return view("employee.index");
    }
 
    public function getAddEmployeeView()

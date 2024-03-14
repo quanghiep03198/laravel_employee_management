@@ -22,7 +22,7 @@ Route::get("/", function () {
 });
 
 Route::get("/dashboard", function () {
-   return view("dashboard");
+   return view("dashboard.index");
 })
    ->middleware(["auth", "verified"])
    ->name("dashboard");
@@ -40,7 +40,7 @@ Route::middleware("auth")->group(function () {
 
    // Employee - views
    Route::get("/employees", [EmployeeController::class, "index"])->name(
-      "employee.list"
+      "employee.index"
    );
 
    Route::get("/employees/add", [
