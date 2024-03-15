@@ -24,15 +24,20 @@ class EmployeeRequest extends FormRequest
       // dd(1);
 
       return [
-         "user_id" => ["bail", "integer", "required"],
          "first_name" => ["bail", "string", "required"],
          "last_name" => ["string", "required"],
          "gender" => ["bail", "string"],
+         "phone_number" => ["string", "required"],
+         "business_email" => ["string","email", "required"],
+         "personal_email" => ["string","email", "required"],
          "indentity_number" => [
             "string",
             "required",
             // "unique:employee,indentity_number,except,id",
          ],
+         "address" => ["string", "required"],
+         "address_district" => ["string", "required"],
+         "address_province" => ["string", "required"],
          "department_id" => ["string", "required"],
          "position_id" => ["string", "required"],
          "employee_code" => [
@@ -41,9 +46,6 @@ class EmployeeRequest extends FormRequest
             // "unique:employee,employee_code,except,id",
          ],
          "hire_date" => ["date", "required"],
-         "address" => ["string", "required"],
-         "address_district" => ["string", "required"],
-         "address_province" => ["string", "required"],
       ];
    }
 }

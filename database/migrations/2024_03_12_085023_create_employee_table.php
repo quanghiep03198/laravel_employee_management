@@ -13,15 +13,17 @@ return new class extends Migration {
       Schema::create("employees", function (Blueprint $table) {
          $table->id();
          $table->timestamps();
-         $table->integer("user_id");
          $table->string("first_name");
          $table->string("last_name");
+         $table->string("phone_number");
+         $table->string("business_email")->unique();
+         $table->string("personal_email")->unique();
          $table->enum("gender", ["male", "female"]);
          $table->string("indentity_number")->unique();
          $table->enum("status", ["working", "left"])->default("working");
          $table->integer("department_id");
          $table->integer("position_id");
-         $table->string("employee_code");
+         $table->string("employee_code")->uniqid();
          $table->date("hire_date");
          $table->string("address");
          $table->string("address_district");

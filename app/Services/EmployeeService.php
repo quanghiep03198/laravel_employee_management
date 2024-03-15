@@ -14,4 +14,8 @@ class EmployeeService extends BaseAbstractService implements
    ) {
       parent::__construct($employeeRepository);
    }
+
+   public function all(){
+      return $this->employeeRepository->all();
+   }
 }
