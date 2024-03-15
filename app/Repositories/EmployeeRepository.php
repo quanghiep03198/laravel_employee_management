@@ -4,35 +4,20 @@ namespace App\Repositories;
 
 use App\Models\Employee;
 use App\Repositories\Base\BaseAbstractRepository;
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 
-class EmployeeRepository extends BaseAbstractRepository
+class EmployeeRepository extends BaseAbstractRepository implements
+   EmployeeRepositoryInterface
 {
    public function __construct(protected Employee $employeeModel)
    {
+      parent::__construct($employeeModel);
    }
 
-   public function addEmployee(mixed $payload)
+   public function allWithUser()
    {
-      return $this->employeeModel->create($payload);
-   }
-
-   public function updateEmployeeById($id)
-   {
-      return $this->employeeModel->updateEmployeeById($id);
-   }
-
-   public function removeEmployee($id)
-   {
-      return $this->employeeModel->removeEmployeeById($id);
-   }
-
-   public function getAllEmployee()
-   {
-      return $this->employeeModel->findAllEmployees();
-   }
-
-   public function getOneEmployee($id)
-   {
-      return $this->employeeModel->findOneEmployeeById($id);
+      return $this->employeeModel
+         ->all()
+         ->join("users", "employees.users_id", "=", "users.id");
    }
 }

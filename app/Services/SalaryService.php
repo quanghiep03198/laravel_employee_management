@@ -3,17 +3,15 @@
 namespace App\Services;
 
 use App\Repositories\Base\SalaryRepositoryInterface;
+use App\Services\Base\BaseAbstractService;
 use App\Services\Interfaces\SalaryServiceInterface;
 
-class SalaryService implements SalaryServiceInterface
+class SalaryService extends BaseAbstractService implements
+   SalaryServiceInterface
 {
    public function __construct(
       protected SalaryRepositoryInterface $salaryRepository
    ) {
-   }
-
-   public function createEmployeeSalary($payload)
-   {
-      return $this->salaryRepository->create($payload);
+      parent::__construct($salaryRepository);
    }
 }

@@ -21,17 +21,27 @@ class EmployeeRequest extends FormRequest
     */
    public function rules(): array
    {
+      // dd(1);
+
       return [
-         "user_id" => ["bail", "integer", "required", "unique:employees"],
+         "user_id" => ["bail", "integer", "required"],
          "first_name" => ["bail", "string", "required"],
-         "last_name" => ["bail", "string", "required"],
+         "last_name" => ["string", "required"],
          "gender" => ["bail", "string"],
-         "indentity_number" => ["string", "required", "unique"],
-         "department_id" => ["integer", "required"],
-         "position_id" => ["integer", "required"],
-         "employee_code" => ["string", "required", "unique"],
+         "indentity_number" => [
+            "string",
+            "required",
+            // "unique:employee,indentity_number,except,id",
+         ],
+         "department_id" => ["string", "required"],
+         "position_id" => ["string", "required"],
+         "employee_code" => [
+            "string",
+            "required",
+            // "unique:employee,employee_code,except,id",
+         ],
          "hire_date" => ["date", "required"],
-         "address_street" => ["string", "required"],
+         "address" => ["string", "required"],
          "address_district" => ["string", "required"],
          "address_province" => ["string", "required"],
       ];

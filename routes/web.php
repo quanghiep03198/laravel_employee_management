@@ -25,7 +25,7 @@ Route::get("/dashboard", function () {
    return view("dashboard.index");
 })
    ->middleware(["auth", "verified"])
-   ->name("dashboard");
+   ->name("view.dashboard");
 
 Route::middleware("auth")->group(function () {
    Route::get("/profile", [ProfileController::class, "edit"])->name(
@@ -40,34 +40,31 @@ Route::middleware("auth")->group(function () {
 
    // Employee - views
    Route::get("/employees", [EmployeeController::class, "index"])->name(
-      "employee.index"
+      "view.employee.list"
    );
 
    Route::get("/employees/add", [
       EmployeeController::class,
       "getAddEmployeeView",
-   ])->name("employee.add.view");
+   ])->name("view.employee.add");
 
    // Employee - APIs
    Route::post("/employees", [EmployeeController::class, "addEmployee"])->name(
-      "employee.add"
+      "api.employee.add"
    );
 
    Route::patch("/employees", [
       EmployeeController::class,
       "updateEmployee",
-   ])->name("employee.update");
+   ])->name("api.employee.update");
 
    Route::delete("/employees", [
       EmployeeController::class,
       "removeEmployee",
-   ])->name("employee.remove");
+   ])->name("api.employee.remove");
 
    Route::get("/departments", [DepartmentController::class, "index"])->name(
-      "department.list"
-   );
-   Route::get("/departments", [SalaryController::class, "index"])->name(
-      "salary.list"
+      "view.department.list"
    );
 });
 

@@ -19,7 +19,7 @@ class Employee extends Model
       "first_name",
       "last_name",
       "gender",
-      "identity_number",
+      "indentity_number",
       "status",
       "department_id",
       "position_id",
@@ -43,6 +43,9 @@ class Employee extends Model
     * @var array<string, string>
     */
    protected $casts = [
+      "user_id" => "integer",
       "hire_date" => "datetime",
+      "department_id" => "integer",
+      "position_id" => "integer",
    ];
 }

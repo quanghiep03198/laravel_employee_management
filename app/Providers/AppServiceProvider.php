@@ -4,12 +4,13 @@ namespace App\Providers;
 
 use App\Repositories\Base\SalaryRepositoryInterface;
 use App\Repositories\EmployeeRepository;
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use App\Repositories\SalaryRepository;
 use App\Services\EmployeeService;
 use App\Services\Interfaces\EmployeeServiceInterface;
 use App\Services\Interfaces\SalaryServiceInterface;
 use App\Services\SalaryService;
-use EmployeeRepositoryInterface;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

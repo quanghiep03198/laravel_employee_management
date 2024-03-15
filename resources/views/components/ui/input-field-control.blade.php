@@ -1,12 +1,4 @@
-@props([
-    'name',
-    'errors',
-    'label',
-    'type' => 'text',
-    'placeholder' => '',
-    'defaultValue' => '',
-    'description' => null,
-])
+@props(['name', 'errors', 'label', 'type' => 'text', 'placeholder' => '', 'defaultValue' => '', 'description' => null])
 
 @php
    $errorMessages = $errors->get($name);
@@ -17,6 +9,6 @@
    <x-ui.input :value="old($name, $defaultValue)" :name="$name" :type="$type" class="w-full" :placeholder="$placeholder" />
    <x-ui.input-error :messages="$errorMessages" />
    @if (isset($description))
-      <small class="text-gray-500">{{ $description }}</small>
+      <small class="font-medium text-gray-500">{{ $description }}</small>
    @endif
 </div>

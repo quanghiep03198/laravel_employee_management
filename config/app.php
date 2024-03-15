@@ -184,7 +184,9 @@ return [
 
    "aliases" => Facade::defaultAliases()
       ->merge([
-         // 'Example' => App\Facades\Example::class,
+         "RouteConstants" => App\Constants\RouteConstants::class,
       ])
       ->toArray(),
+
+   // "files" => [config_path("./constants.php")],
 ];

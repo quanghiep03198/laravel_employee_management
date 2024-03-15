@@ -1,12 +1,21 @@
 <?php
-
 namespace App\Repositories\Base;
 
-abstract class BaseAbstractRepository
+use Illuminate\Database\Eloquent\Model;
+// use App\Repositories\Base\BaseRepositoryInterface;
+
+abstract class BaseAbstractRepository implements BaseRepositoryInterface
 {
-   public function __construct(protected $model)
+   protected $model;
+
+   public function __construct(Model $model)
    {
       $this->model = $model;
+   }
+
+   public function all()
+   {
+      return $this->model->all();
    }
 
    public function create($payload)
@@ -14,28 +23,30 @@ abstract class BaseAbstractRepository
       $this->model->create($payload);
    }
 
-   public function findOne($filterQuery)
+   public function findOneById($id)
    {
-      if (is_string($filterQuery)) {
-         return $this->model->whereRaw($filterQuery)->first();
-      } else {
-         $this->model->where($filterQuery)->first();
-      }
+      return $this->model->firstWhere("id", "=", $id);
    }
 
    public function findAndUpdateById($id, $payload)
    {
-      $recordToUpdate = $this->model->where("id", "=", $id);
-      $updatedRecord = $recordToUpdate->update($payload);
-      return $updatedRecord;
+      $foundRecord = $this->model->firstWhere("id", "=", $id);
+      if (!isset($foundRecord)) {
+         return null;
+      }
+      return $foundRecord->update($payload);
    }
 
-   public function findOneAndDelete($filterQuery)
+   /**
+    * Delete record by ID
+    * @param int|string $id
+    */
+   public function findAndDeleteById($id)
    {
-      $recordToDelete = is_string($filterQuery)
-         ? $this->model->whereRaw($filterQuery)
-         : $this->model->where($filterQuery);
-      $recordToDelete->delete();
-      return $recordToDelete;
+      $foundRecord = $this->model->firstWhere("id", "=", $id);
+      if (!isset($foundRecord)) {
+         return null;
+      }
+      return $foundRecord->delete();
    }
 }

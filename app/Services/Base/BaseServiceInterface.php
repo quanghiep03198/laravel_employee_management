@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Base;
+namespace App\Services\Base;
 
-interface BaseRepositoryInterface
+interface BaseServiceInterface
 {
    public function all();
    public function findOneById($id);

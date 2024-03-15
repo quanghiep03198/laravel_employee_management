@@ -2,6 +2,6 @@
 
 namespace App\Repositories\Base;
 
-interface SalaryRepositoryInterface extends BaseRespositoryInterface
+interface SalaryRepositoryInterface extends BaseRepositoryInterface
 {
 }

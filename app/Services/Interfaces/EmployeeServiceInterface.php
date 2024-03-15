@@ -2,9 +2,8 @@
 
 namespace App\Services\Interfaces;
 
-interface EmployeeServiceInterface
+use App\Services\Base\BaseServiceInterface;
+
+interface EmployeeServiceInterface extends BaseServiceInterface
 {
-   public function addEmployee();
-   public function updateEmployee();
-   public function findAllEmployee();
 }

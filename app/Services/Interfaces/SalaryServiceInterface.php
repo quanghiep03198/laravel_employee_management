@@ -2,7 +2,8 @@
 
 namespace App\Services\Interfaces;
 
-interface SalaryServiceInterface
+use App\Services\Base\BaseServiceInterface;
+
+interface SalaryServiceInterface extends BaseServiceInterface
 {
-   public function createEmployeeSalary($payload);
 }

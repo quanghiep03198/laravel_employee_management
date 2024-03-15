@@ -2,26 +2,16 @@
 
 namespace App\Services;
 
-use App\Repositories\EmployeeRepository;
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
+use App\Services\Base\BaseAbstractService;
+use App\Services\Interfaces\EmployeeServiceInterface;
 
-class EmployeeService
+class EmployeeService extends BaseAbstractService implements
+   EmployeeServiceInterface
 {
-   public function __construct(protected EmployeeRepository $employeeRepository)
-   {
-   }
-
-   public function addEmployee(array $payload): mixed
-   {
-      return $this->employeeRepository->create($payload);
-   }
-
-   public function updateEmployeeById($id, $payload)
-   {
-      return $this->employeeRepository->updateEmployeeById($id, $payload);
-   }
-
-   public function removeEmployeeById($id)
-   {
-      return $this->employeeRepository->removeEmployee($id);
+   public function __construct(
+      protected EmployeeRepositoryInterface $employeeRepository
+   ) {
+      parent::__construct($employeeRepository);
    }
 }

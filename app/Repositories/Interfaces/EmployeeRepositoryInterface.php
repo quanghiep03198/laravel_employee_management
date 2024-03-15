@@ -1,12 +1,8 @@
 <?php
+namespace App\Repositories\Interfaces;
 
-use App\Repositories\Base\BaseRespositoryInterface;
+use App\Repositories\Base\BaseRepositoryInterface;
 
-interface EmployeeRepositoryInterface extends BaseRespositoryInterface
+interface EmployeeRepositoryInterface extends BaseRepositoryInterface
 {
-   public function addEmployee(mixed $payload);
-   public function updateEmployeeById($id);
-   public function removeEmployeeById($id);
-   public function findAllEmployees();
-   public function findOneEmployeeById($id);
 }

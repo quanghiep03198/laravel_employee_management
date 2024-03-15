@@ -19,11 +19,12 @@
    <main class="flex h-screen place-items-center items-center justify-center bg-white px-6 py-24 sm:py-32 xl:px-8">
       <div class="text-center">
          <p class="text-base font-semibold text-primary">500</p>
-         <h1 class="mt-4 text-5xl font-bold tracking-tight text-gray-900">Internal Server Error</h1>
-         <p class="mt-6 text-base leading-7 text-muted">Sorry, we couldn’t find the page you’re looking for.</p>
+         <h1 class="mt-4 text-5xl font-bold tracking-tight text-gray-900">
+            Internal Server Error</h1>
+         <p class="mt-6 text-base leading-7 text-muted">Sorry, we couldn’t find
+            the page you’re looking for.</p>
          <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="/"
-               class="inline-flex items-center justify-center rounded-md bg-primary px-2.5 py-2 text-sm text-white">
+            <a href="/" class="inline-flex items-center justify-center rounded-md bg-primary px-2.5 py-2 text-sm text-white">
                Go back home
             </a>
             <a href="#" class="text-sm font-semibold text-gray-900">
@@ -38,9 +39,8 @@
             <summary class="flex cursor-pointer list-none items-center gap-4">
                <div>
                   <!-- notice here, we added our own triangle/arrow svg -->
-                  <svg class="rotate-0 transform text-blue-700 transition-all duration-300" fill="none"
-                     height="20" width="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                     stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="rotate-0 transform text-blue-700 transition-all duration-300" fill="none" height="20" width="20" stroke="currentColor"
+                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
                      <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                </div>

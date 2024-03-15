@@ -10,17 +10,20 @@ return new class extends Migration {
     */
    public function up(): void
    {
-      Schema::create("employee", function (Blueprint $table) {
+      Schema::create("employees", function (Blueprint $table) {
          $table->id();
          $table->timestamps();
          $table->integer("user_id");
          $table->string("first_name");
          $table->string("last_name");
          $table->enum("gender", ["male", "female"]);
+         $table->string("indentity_number")->unique();
+         $table->enum("status", ["working", "left"])->default("working");
          $table->integer("department_id");
+         $table->integer("position_id");
          $table->string("employee_code");
          $table->date("hire_date");
-         $table->string("address_street");
+         $table->string("address");
          $table->string("address_district");
          $table->string("address_province");
       });
