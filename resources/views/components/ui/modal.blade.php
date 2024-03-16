@@ -1,51 +1,29 @@
-@props(['name', 'show' => false, 'maxWidth' => '2xl'])
+<div x-data="{ open: false }">
+	<div @click="open = true">
+		{{ $trigger }}
+	</div>
+	<div x-show="open" class="fixed inset-0 z-[100] overflow-y-auto"
+		aria-labelledby="modal-title" role="dialog" aria-modal="true">
+		<div
+			class="flex min-h-screen items-center justify-center px-4 text-center sm:block sm:p-0 md:items-center">
+			<div x-cloak @click="open = false" x-show="open"
+				x-transition:enter="transition ease-out duration-300 transform"
+				x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+				x-transition:leave="transition ease-in duration-200 transform"
+				x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+				class="fixed inset-0 bg-gray-950/80 bg-opacity-40 transition-opacity"
+				aria-hidden="true"></div>
 
-@php
-   $maxWidth = [
-       'sm' => 'sm:max-w-sm',
-       'md' => 'sm:max-w-md',
-       'lg' => 'sm:max-w-lg',
-       'xl' => 'sm:max-w-xl',
-       '2xl' => 'sm:max-w-2xl',
-   ][$maxWidth];
-@endphp
-
-<div x-data="{
-    show: @js($show),
-    focusables() {
-        // All focusable element types...
-        let selector = 'a, button, input:not([type=\'hidden\']), textarea, select, details, [tabindex]:not([tabindex=\'-1\'])'
-        return [...$el.querySelectorAll(selector)]
-            // All non-disabled elements...
-            .filter(el => !el.hasAttribute('disabled'))
-    },
-    firstFocusable() { return this.focusables()[0] },
-    lastFocusable() { return this.focusables().slice(-1)[0] },
-    nextFocusable() { return this.focusables()[this.nextFocusableIndex()] || this.firstFocusable() },
-    prevFocusable() { return this.focusables()[this.prevFocusableIndex()] || this.lastFocusable() },
-    nextFocusableIndex() { return (this.focusables().indexOf(document.activeElement) + 1) % (this.focusables().length + 1) },
-    prevFocusableIndex() { return Math.max(0, this.focusables().indexOf(document.activeElement)) - 1 },
-}" x-init="$watch('show', value => {
-    if (value) {
-        document.body.classList.add('overflow-y-hidden');
-        {{ $attributes->has('focusable') ? 'setTimeout(() => firstFocusable().focus(), 100)' : '' }}
-    } else {
-        document.body.classList.remove('overflow-y-hidden');
-    }
-})" x-on:open-modal.window="$event.detail == '{{ $name }}' ? show = true : null"
-   x-on:close-modal.window="$event.detail == '{{ $name }}' ? show = false : null" x-on:close.stop="show = false" x-on:keydown.escape.window="show = false"
-   x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()" x-on:keydown.shift.tab.prevent="prevFocusable().focus()" x-show="show"
-   class="fixed inset-0 z-50 overflow-y-auto px-4 py-6 sm:px-0" style="display: {{ $show ? 'block' : 'none' }};">
-   <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300"
-      x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0">
-      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-   </div>
-
-   <div x-show="show" class="{{ $maxWidth }} mb-6 transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:mx-auto sm:w-full"
-      x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200"
-      x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-      {{ $slot }}
-   </div>
+			<div x-cloak x-show="open"
+				x-transition:enter="transition ease-out duration-300 transform"
+				x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+				x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+				x-transition:leave="transition ease-in duration-200 transform"
+				x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+				x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+				class="2xl:max-w-2xl my-20 inline-block w-full max-w-xl transform overflow-hidden rounded-lg bg-white p-8 text-left shadow-xl transition-all">
+				{{ $slot }}
+			</div>
+		</div>
+	</div>
 </div>

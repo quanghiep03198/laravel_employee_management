@@ -1785,12 +1785,13 @@
 .datagrid-mask-msg {
   position: absolute;
   top: 50%;
-  margin-top: -20px;
-  padding: 10px 5px 10px 30px;
+  margin-top: -0.5rem;
+  padding: 1rem;
   width: auto;
-  height: 16px;
-  border-width: 2px;
-  border-style: solid;
+  text-align: center;
+  height: fit-content;
+  border: 1px solid var(--border);
+  border-radius: 4px;
   display: none;
 }
 .datagrid-empty {
@@ -1908,19 +1909,14 @@
 }
 .datagrid-header-check,
 .datagrid-cell-check {
-  padding: 0;
-  width: 27px;
-  height: 18px;
+  padding: 8px;
+
   font-size: 1px;
   text-align: center;
   overflow: hidden;
 }
 .datagrid-header-check input,
 .datagrid-cell-check input {
-  margin: 0;
-  padding: 0;
-  width: 15px;
-  height: 18px;
 }
 .datagrid-resize-proxy {
   position: absolute;
@@ -1982,13 +1978,13 @@
 }
 .datagrid-header,
 .datagrid-td-rownumber {
-  background-color: #f2f2f2;
-  background: -webkit-linear-gradient(top, #ffffff 0, #f2f2f2 100%);
+  background-color: var(--background);
+  /* background: -webkit-linear-gradient(top, #ffffff 0, #f2f2f2 100%);
   background: -moz-linear-gradient(top, #ffffff 0, #f2f2f2 100%);
   background: -o-linear-gradient(top, #ffffff 0, #f2f2f2 100%);
   background: linear-gradient(to bottom, #ffffff 0, #f2f2f2 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0); */
 }
 .datagrid-cell-rownumber {
   color: #333;
@@ -2004,7 +2000,7 @@
 }
 .datagrid-toolbar,
 .datagrid-pager {
-  background: #f5f5f5;
+  background: var(--background);
 }
 .datagrid-header,
 .datagrid-toolbar,
@@ -2243,18 +2239,22 @@
   min-width: 28px;
 }
 .pagination-first {
+  background-color: var(--background);
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-double-left%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M8.354%201.646a.5.5%200%200%201%200%20.708L2.707%208l5.647%205.646a.5.5%200%200%201-.708.708l-6-6a.5.5%200%200%201%200-.708l6-6a.5.5%200%200%201%20.708%200%22%2F%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M12.354%201.646a.5.5%200%200%201%200%20.708L6.707%208l5.647%205.646a.5.5%200%200%201-.708.708l-6-6a.5.5%200%200%201%200-.708l6-6a.5.5%200%200%201%20.708%200%22%2F%3E%0A%3C%2Fsvg%3E")
     no-repeat 0 center;
 }
 .pagination-prev {
+  background-color: var(--background);
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-left%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M11.354%201.646a.5.5%200%200%201%200%20.708L5.707%208l5.647%205.646a.5.5%200%200%201-.708.708l-6-6a.5.5%200%200%201%200-.708l6-6a.5.5%200%200%201%20.708%200%22%2F%3E%0A%3C%2Fsvg%3E")
     no-repeat 0 center;
 }
 .pagination-next {
+  background-color: var(--background);
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-right%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M4.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L10.293%208%204.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%0A%3C%2Fsvg%3E")
     no-repeat 0 center;
 }
 .pagination-last {
+  background-color: var(--background);
   background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-double-right%22%20viewBox%3D%220%200%2016%2016%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M3.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L9.293%208%203.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M7.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L13.293%208%207.646%202.354a.5.5%200%200%201%200-.708%22%2F%3E%0A%3C%2Fsvg%3E")
     no-repeat 0 center;
 }

@@ -23,7 +23,12 @@
       @apply !bg-none border border-border px-1.5 py-2 rounded-md focus:!outline-none focus:!border-primary focus:!ring-0
    }
 
-   input {
+   input[type="text"],input[type="number"],input[type="email"],input[type="date"] ,input[type="datetime-local"]{
       @apply border !border-border focus:!outline-none focus:!border-primary focus:!ring-0
    }
+   input[type="checkbox"]{
+      @apply h-4 w-4 rounded border-border text-primary focus:ring-primary
+   }
+
+   
 }

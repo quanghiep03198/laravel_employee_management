@@ -17,20 +17,25 @@ class EmployeeController extends Controller
 
    public function index()
    {
-      $employees = $this->employeeService->all();
-
-      return view("employee.index")->with("data", $employees);
+      return view("employee.index");
    }
 
    public function getAddEmployeeView()
    {
       return view("employee.add");
    }
+
    public function addEmployee(EmployeeRequest $request)
    {
       $validated = $request->validated();
       $this->employeeService->create($validated);
       return redirect()->route("view.employee.list");
+   }
+
+   public function allEmployees()
+   {
+      $employees = $this->employeeService->all();
+      return response()->json($employees);
    }
 
    public function updateEmployee(int $id, EmployeeRequest $request)

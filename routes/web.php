@@ -37,31 +37,40 @@ Route::middleware("auth")->group(function () {
    Route::delete("/profile", [ProfileController::class, "destroy"])->name(
       "profile.destroy"
    );
-
    // Employee - views
-   Route::get("/employees", [EmployeeController::class, "index"])->name(
-      "view.employee.list"
-   );
+   Route::prefix("employee")->group(function () {
+      Route::get("", [EmployeeController::class, "index"])->name(
+         "view.employee.list"
+      );
+      Route::get("add", [
+         EmployeeController::class,
+         "getAddEmployeeView",
+      ])->name("view.employee.add");
+   });
 
-   Route::get("/employees/add", [
-      EmployeeController::class,
-      "getAddEmployeeView",
-   ])->name("view.employee.add");
+   // #region Employee - APIs
+   Route::prefix("api")->group(function () {
+      Route::get("/employees", [
+         EmployeeController::class,
+         "allEmployees",
+      ])->name("api.employee.list");
 
-   // Employee - APIs
-   Route::post("/employees", [EmployeeController::class, "addEmployee"])->name(
-      "api.employee.add"
-   );
+      Route::post("/employees", [
+         EmployeeController::class,
+         "addEmployee",
+      ])->name("api.employee.add");
 
-   Route::patch("/employees", [
-      EmployeeController::class,
-      "updateEmployee",
-   ])->name("api.employee.update");
+      Route::patch("/employees", [
+         EmployeeController::class,
+         "updateEmployee",
+      ])->name("api.employee.update");
 
-   Route::delete("/employees", [
-      EmployeeController::class,
-      "removeEmployee",
-   ])->name("api.employee.remove");
+      Route::delete("/employees", [
+         EmployeeController::class,
+         "removeEmployee",
+      ])->name("api.employee.remove");
+   });
+   //#endregion
 
    Route::get("/departments", [DepartmentController::class, "index"])->name(
       "view.department.list"
